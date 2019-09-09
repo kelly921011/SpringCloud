@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springcloud.client.Dao.AdminDao">
+     <!-- 查询后台管理员列表-->
+    <select id="adminList" resultType="com.springcloud.client.entity.Admin">
+        select admin_id,admin_name,admin_pwd,admin_permissions,admin_telephone,create_time,last_modify_time from admin
+        <where>
+            admin_permissions !='0'
+            and storeId = 0
+            <if test="permissions !='0'">
+                and admin_permissions !=#{permissions}
+            </if>
+        </where>
+        order by last_modify_time desc
+	</select>
+
+</mapper>

@@ -1,0 +1,20 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: config-server
+  # git管理配置
+  cloud:                                                  #config服务端，从git拉取数据
+    config:
+      server:
+        git:
+          uri: https://gitee.com/kellyT/springcloud-config        # 配置git仓库的地址
+          searchPaths: demo #搜索路径
+          username: kelly921011@outlook.com
+          password: mima921011@
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
